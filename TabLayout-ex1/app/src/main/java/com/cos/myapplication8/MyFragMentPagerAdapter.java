@@ -1,0 +1,42 @@
+package com.cos.myapplication8;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * PagerAdapter 는 양옆에 page를 미리 뛰워둠.
+ * FragmentPagerAdapter 는
+ * FragmentStateAdapter 화면에서 보이지 않으면 날림.
+ */
+public class MyFragMentPagerAdapter extends FragmentPagerAdapter {
+
+    private List<Fragment> mFragments = new ArrayList<>();
+
+    public MyFragMentPagerAdapter(@NonNull FragmentManager fm, int behavior) {
+        super(fm, behavior);
+    }
+
+    public void addFragment(Fragment fragment) {
+        mFragments.add(fragment);
+    }
+
+    //    public void addFragments(List<Fragment> mFragments) {
+//        this.mFragments = mFragments;
+//    }
+
+    @NonNull
+    @Override
+    public Fragment getItem(int position) {
+        return mFragments.get(position);
+    }
+
+    @Override
+    public int getCount() {
+        return mFragments.size();
+    }
+}
